@@ -442,7 +442,7 @@ HRESULT CEffectLoader::GetInterfaceParametersAndAddToReflection( UINT InterfaceC
     VBD( InterfaceCount <= D3D11_SHADER_MAX_INTERFACES, "Internal loading error: InterfaceCount > D3D11_SHADER_MAX_INTERFACES." );
     m_ReflectionMemory += AlignToPowerOf2(InterfaceCount * sizeof(SShaderBlock::SInterfaceParameter), c_DataAlignment);
     D3DXASSERT( ppInterfaces );
-    (*ppInterfaces) = PRIVATENEW SShaderBlock::SInterfaceParameter[InterfaceCount];
+    (*ppInterfaces) = static_cast<SShaderBlock::SInterfaceParameter*>(m_BulkHeap.Allocate(sizeof(SShaderBlock::SInterfaceParameter) * InterfaceCount));
     VN( *ppInterfaces );
 
     VHD( m_msUnstructured.ReadAtOffset(offset, sizeof(SBinaryInterfaceInitializer) * InterfaceCount, (void**)&pInterfaceInitializer),

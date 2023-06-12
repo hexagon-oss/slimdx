@@ -290,31 +290,31 @@ struct SBaseBlock
 
     BOOL ApplyAssignments(CEffect *pEffect);
 
-    D3DX11INLINE SSamplerBlock *AsSampler() const
+    inline SSamplerBlock *AsSampler() const
     {
         D3DXASSERT( BlockType == EBT_Sampler );
         return (SSamplerBlock*) this;
     }
 
-    D3DX11INLINE SDepthStencilBlock *AsDepthStencil() const
+    inline SDepthStencilBlock *AsDepthStencil() const
     {
         D3DXASSERT( BlockType == EBT_DepthStencil );
         return (SDepthStencilBlock*) this;
     }
 
-    D3DX11INLINE SBlendBlock *AsBlend() const
+    inline SBlendBlock *AsBlend() const
     {
         D3DXASSERT( BlockType == EBT_Blend );
         return (SBlendBlock*) this;
     }
 
-    D3DX11INLINE SRasterizerBlock *AsRasterizer() const
+    inline SRasterizerBlock *AsRasterizer() const
     {
         D3DXASSERT( BlockType == EBT_Rasterizer );
         return (SRasterizerBlock*) this;
     }
 
-    D3DX11INLINE SPassBlock *AsPass() const
+    inline SPassBlock *AsPass() const
     {
         D3DXASSERT( BlockType == EBT_Pass );
         return (SPassBlock*) this;

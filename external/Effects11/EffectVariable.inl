@@ -12,6 +12,8 @@
 // Invalid variable forward defines
 //////////////////////////////////////////////////////////////////////////
 
+#include <d3d9.h>
+
 struct SEffectInvalidScalarVariable;
 struct SEffectInvalidVectorVariable;
 struct SEffectInvalidMatrixVariable;
@@ -508,7 +510,7 @@ BOOL GetVariableBySemanticHelper(LPCSTR Semantic, UINT  VariableCount, SVarType 
     return FALSE;
 }
 
-D3DX11INLINE BOOL AreBoundsValid(UINT  Offset, UINT  Count, CONST void *pData, CONST SType *pType, UINT  TotalUnpackedSize)
+inline BOOL AreBoundsValid(UINT  Offset, UINT  Count, CONST void *pData, CONST SType *pType, UINT  TotalUnpackedSize)
 {
     if (Count == 0) return TRUE;
     UINT  singleElementSize = pType->GetTotalUnpackedSize(TRUE);
@@ -602,7 +604,7 @@ lExit:
 }
 
 template<ETemplateVarType SourceType, ETemplateVarType DestType, typename SRC_TYPE, typename DEST_TYPE>
-D3DX11INLINE HRESULT SetScalarArray(CONST SRC_TYPE *pSrcValues, DEST_TYPE *pDestValues, UINT  Offset, UINT  Count, 
+inline HRESULT SetScalarArray(CONST SRC_TYPE *pSrcValues, DEST_TYPE *pDestValues, UINT  Offset, UINT  Count, 
                                     SType *pType, UINT  TotalUnpackedSize, const char *pFuncName)
 {
     HRESULT hr = S_OK;
@@ -630,7 +632,7 @@ lExit:
 }
 
 template<ETemplateVarType SourceType, ETemplateVarType DestType, typename SRC_TYPE, typename DEST_TYPE>
-D3DX11INLINE HRESULT GetScalarArray(SRC_TYPE *pSrcValues, DEST_TYPE *pDestValues, UINT  Offset, UINT  Count, 
+inline HRESULT GetScalarArray(SRC_TYPE *pSrcValues, DEST_TYPE *pDestValues, UINT  Offset, UINT  Count, 
                                     SType *pType, UINT  TotalUnpackedSize, const char *pFuncName)
 {
     HRESULT hr = S_OK;
@@ -1308,7 +1310,7 @@ lExit:
         }
     }
 
-    D3DX11INLINE void DirtyVariable()
+    inline void DirtyVariable()
     {
         D3DXASSERT(NULL != pCB);
         pCB->IsDirty = TRUE;
@@ -2548,7 +2550,7 @@ struct TMatrix4x4Variable : public TMatrixVariable<IBaseInterface, FALSE>
     STDMETHOD(GetMatrixTransposeArray)(float *pData, UINT  Offset, UINT  Count);
 };
 
-D3DX11INLINE static void Matrix4x4TransposeHelper(CONST void *pSrc, void *pDst)
+inline static void Matrix4x4TransposeHelper(CONST void *pSrc, void *pDst)
 {
     BYTE *pDestData = (BYTE*)pDst;
     UINT *pMatrix = (UINT*)pSrc;
@@ -2574,7 +2576,7 @@ D3DX11INLINE static void Matrix4x4TransposeHelper(CONST void *pSrc, void *pDst)
     ((UINT*)pDestData)[3 * 4 + 3] = pMatrix[3 * 4 + 3];
 }
 
-D3DX11INLINE static void Matrix4x4Copy(CONST void *pSrc, void *pDst)
+inline static void Matrix4x4Copy(CONST void *pSrc, void *pDst)
 {
 #if 1
     // In tests, this path ended up generating faster code both on x86 and x64
@@ -2624,7 +2626,7 @@ D3DX11INLINE static void Matrix4x4Copy(CONST void *pSrc, void *pDst)
 
 // Note that branches in this code is based on template parameters and will be compiled out
 template<BOOL IsColumnMajor, BOOL Transpose, BOOL IsSetting>
-D3DX11INLINE HRESULT DoMatrix4x4ArrayInternal(BYTE *pEffectData, void *pMatrixData, UINT  Offset, UINT  Count
+inline HRESULT DoMatrix4x4ArrayInternal(BYTE *pEffectData, void *pMatrixData, UINT  Offset, UINT  Count
 
 #ifdef _DEBUG
                                               , SType *pType, UINT  TotalUnpackedSize, LPCSTR pFuncName)

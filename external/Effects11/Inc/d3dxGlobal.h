@@ -54,7 +54,7 @@ using namespace D3DX11Debug;
 // Preferred data alignment -- must be a power of 2!
 static const UINT c_DataAlignment = sizeof(UINT_PTR);
 
-D3DX11INLINE UINT AlignToPowerOf2(UINT Value, UINT Alignment)
+inline UINT AlignToPowerOf2(UINT Value, UINT Alignment)
 {
     D3DXASSERT((Alignment & (Alignment - 1)) == 0);
     // to align to 2^N, add 2^N - 1 and AND with all but lowest N bits set
@@ -62,7 +62,7 @@ D3DX11INLINE UINT AlignToPowerOf2(UINT Value, UINT Alignment)
     return (Value + Alignment - 1) & (~(Alignment - 1));
 }
 
-D3DX11INLINE void * AlignToPowerOf2(void *pValue, UINT_PTR Alignment)
+inline void * AlignToPowerOf2(void *pValue, UINT_PTR Alignment)
 {
     D3DXASSERT((Alignment & (Alignment - 1)) == 0);
     // to align to 2^N, add 2^N - 1 and AND with all but lowest N bits set
@@ -71,7 +71,7 @@ D3DX11INLINE void * AlignToPowerOf2(void *pValue, UINT_PTR Alignment)
 
 
 // Fast memcpy
-D3DX11INLINE void dwordMemcpy( __out_bcount(uByteCount) void * __restrict pDest, __in_bcount(uByteCount) CONST void * __restrict pSource, UINT uByteCount)
+inline void dwordMemcpy( __out_bcount(uByteCount) void * __restrict pDest, __in_bcount(uByteCount) CONST void * __restrict pSource, UINT uByteCount)
 {
     UINT i;
     D3DXASSERT(uByteCount % 4 == 0);
@@ -652,7 +652,7 @@ public:
     HRESULT AddString(LPCSTR pString, UINT *pOffset);                          // Writes a null-terminated string to buffer
     HRESULT AddData(const void *pNewData, UINT bufferSize, UINT *pOffset);     // Writes data block to buffer
 
-    void*   Allocate(UINT buffferSize);                                        // Memory allocator support
+    void*   Allocate(UINT bufferSize);                                        // Memory allocator support
     UINT    GetSize();
     void    EnableAlignment();
 
@@ -660,19 +660,19 @@ public:
     ~CDataBlockStore();
 };
 
-// Custom allocator that uses CDataBlockStore
-// The trick is that we never free, so we don't have to keep as much state around
-// Use PRIVATENEW in CEffectLoader
-
-static void* __cdecl operator new(size_t s, CDataBlockStore &pAllocator)
-{
-    D3DXASSERT( s <= 0xffffffff );
-    return pAllocator.Allocate( (UINT)s );
-}
-
-static void __cdecl operator delete(void* p, CDataBlockStore &pAllocator)
-{
-}
+//// Custom allocator that uses CDataBlockStore
+//// The trick is that we never free, so we don't have to keep as much state around
+//// Use PRIVATENEW in CEffectLoader
+//
+//void* __cdecl operator new(size_t s, CDataBlockStore &pAllocator)
+//{
+//    D3DXASSERT( s <= 0xffffffff );
+//    return pAllocator.Allocate( (UINT)s );
+//}
+//
+//void __cdecl operator delete(void* p, CDataBlockStore &pAllocator)
+//{
+//}
 
 
 //////////////////////////////////////////////////////////////////////////

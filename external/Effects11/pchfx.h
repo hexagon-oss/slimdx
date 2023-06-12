@@ -11,7 +11,6 @@
 #define __D3DX11_PCHFX_H__
 
 #include "d3d11.h"
-#include "d3dx11.h"
 #undef DEFINE_GUID
 #include "INITGUID.h"
 #include "d3dx11effect.h"

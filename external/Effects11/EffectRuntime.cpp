@@ -129,7 +129,7 @@ BOOL SPassBlock::CheckDependencies()
 
 
 // Update constant buffer contents if necessary
-D3DX11INLINE void CheckAndUpdateCB_FX(ID3D11DeviceContext *pContext, SConstantBuffer *pCB)
+inline void CheckAndUpdateCB_FX(ID3D11DeviceContext *pContext, SConstantBuffer *pCB)
 {
     if (pCB->IsDirty && !pCB->IsNonUpdatable)
     {
