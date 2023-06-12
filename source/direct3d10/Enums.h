@@ -23,7 +23,6 @@
 
 #include <windows.h>
 #include <d3d10.h>
-#include <d3dx10.h>
 
 namespace SlimDX
 {
@@ -250,27 +249,27 @@ namespace SlimDX
 			/// <summary>
 			/// Indicates the red channel should be used.
 			/// </summary>
-			Red = D3DX10_CHANNEL_RED,
+			Red = 1 << 0,
 
 			/// <summary>
 			/// Indicates the blue channel should be used.
 			/// </summary>
-			Blue = D3DX10_CHANNEL_BLUE,
+			Blue = 1 << 1,
 
 			/// <summary>
 			/// Indicates the green channel should be used.
 			/// </summary>
-			Green = D3DX10_CHANNEL_GREEN,
+			Green = 1 << 2,
 
 			/// <summary>
 			/// Indicates the alpha channel should be used.
 			/// </summary>
-			Alpha = D3DX10_CHANNEL_ALPHA,
+			Alpha = 1 << 3,
 
 			/// <summary>
 			/// Indicates the luminances of the red, green, and blue channels should be used.
 			/// </summary>
-			Luminance = D3DX10_CHANNEL_LUMINANCE
+			Luminance = 1 <<4
 		};
 		
 		/// <summary>Identifies mask values for writing to a render target.</summary>
@@ -822,74 +821,74 @@ namespace SlimDX
 			/// <summary>
 			/// No scaling or filtering will take place. Pixels outside the bounds of the source image are assumed to be transparent black.
 			/// </summary>
-			None = D3DX10_FILTER_NONE,
+			None = 1 << 0,
 			
 			/// <summary>
 			/// Each destination pixel is computed by sampling the nearest pixel from the source image.
 			/// </summary>
-			Point = D3DX10_FILTER_POINT,
+			Point = 2 << 0,
 			
 			/// <summary>
 			/// Each destination pixel is computed by sampling the four nearest pixels from the source image. This filter
 			/// works best when the scale on both axes is less than two.
 			/// </summary>
-			Linear = D3DX10_FILTER_LINEAR,
+			Linear = 3 << 0,
 			
 			/// <summary>
 			/// Every pixel in the source image contributes equally to the destination image. This is the slowest of the filters.
 			/// </summary>
-			Triangle = D3DX10_FILTER_TRIANGLE,
+			Triangle = 4 << 0,
 			
 			/// <summary>
 			/// Each pixel is computed by averaging a 2x2(x2) box of pixels from the source image. This filter works only when the
 			/// dimensions of the destination are half those of the source, as is the case with mipmaps.
 			/// </summary>
-			Box = D3DX10_FILTER_BOX,
+			Box = 5 << 0,
 			
 			/// <summary>
 			/// Pixels off the edge of the texture on the u-axis should be mirrored, not wrapped.
 			/// </summary>
-			MirrorU = D3DX10_FILTER_MIRROR_U,
+			MirrorU = 1 << 16,
 			
 			/// <summary>
 			/// Pixels off the edge of the texture on the v-axis should be mirrored, not wrapped.
 			/// </summary>
-			MirrorV = D3DX10_FILTER_MIRROR_V,
+			MirrorV = 2 << 16,
 			
 			/// <summary>
 			/// Pixels off the edge of the texture on the w-axis should be mirrored, not wrapped.
 			/// </summary>
-			MirrowW = D3DX10_FILTER_MIRROR_W,
+			MirrowW = 4 << 16,
 			
 			/// <summary>
 			/// Combines the MirrorU, MirrorV, and MirrorW flags.
 			/// </summary>
-			Mirror = D3DX10_FILTER_MIRROR,
+			Mirror = 7 << 16,
 			
 			/// <summary>
 			/// The resulting image must be dithered using a 4x4 ordered dither algorithm. This happens when converting from one format to another.
 			/// </summary>
-			Dither = D3DX10_FILTER_DITHER,
+			Dither = 1 << 19,
 			
 			/// <summary>
 			/// Do diffuse dithering on the image when changing from one format to another.
 			/// </summary>
-			DitherDiffusion = D3DX10_FILTER_DITHER_DIFFUSION,
+			DitherDiffusion = 2 << 19,
 			
 			/// <summary>
 			/// Input data is in standard RGB (sRGB) color space.
 			/// </summary>
-			StandardRgbIn = D3DX10_FILTER_SRGB_IN,
+			StandardRgbIn = 1 << 21,
 			
 			/// <summary>
 			/// Output data is in standard RGB (sRGB) color space.
 			/// </summary>
-			StandardRgbOut = D3DX10_FILTER_SRGB_OUT,
+			StandardRgbOut = 2 << 21,
 			
 			/// <summary>
 			/// Combines the StandardRgbIn and StandardRgbOut flags.
 			/// </summary>
-			StandardRgb = D3DX10_FILTER_SRGB,
+			StandardRgb = 3 << 21,
 		};
 	
 		/// <summary>
