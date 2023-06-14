@@ -52,51 +52,6 @@ namespace Direct3D10
 	{
 		return Result( D3DERR_WASSTILLDRAWING );
 	}
-	
-	Result ResultCode::CannotModifyIndexBuffer::get()
-	{
-		return Result( D3DX10_ERR_CANNOT_MODIFY_INDEX_BUFFER );
-	}
-	
-	Result ResultCode::InvalidMesh::get()
-	{
-		return Result( D3DX10_ERR_INVALID_MESH );
-	}
-	
-	Result ResultCode::CannotSortByAttribute::get()
-	{
-		return Result( D3DX10_ERR_CANNOT_ATTR_SORT );
-	}
-	
-	Result ResultCode::SkinningNotSupported::get()
-	{
-		return Result( D3DX10_ERR_SKINNING_NOT_SUPPORTED );
-	}
-	
-	Result ResultCode::TooManyInfluences::get()
-	{
-		return Result( D3DX10_ERR_TOO_MANY_INFLUENCES );
-	}
-	
-	Result ResultCode::InvalidData::get()
-	{
-		return Result( D3DX10_ERR_INVALID_DATA );
-	}
-	
-	Result ResultCode::LoadedMeshHasNoData::get()
-	{
-		return Result( D3DX10_ERR_LOADED_MESH_HAS_NO_DATA );
-	}
-	
-	Result ResultCode::DuplicateNamedFragment::get()
-	{
-		return Result( D3DX10_ERR_DUPLICATE_NAMED_FRAGMENT );
-	}
-	
-	Result ResultCode::CannotRemoveLastItem::get()
-	{
-		return Result( D3DX10_ERR_CANNOT_REMOVE_LAST_ITEM );
-	}
 
 	Result ResultCode::Success::get()
 	{

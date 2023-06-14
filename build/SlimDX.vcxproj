@@ -721,8 +721,6 @@
     <ClCompile Include="..\source\direct3d10\SpriteInstance.cpp" />
     <ClCompile Include="..\source\direct3d10\Font10.cpp" />
     <ClCompile Include="..\source\direct3d10\FontDescription10.cpp" />
-    <ClCompile Include="..\source\direct3d10\ImageInformation10.cpp" />
-    <ClCompile Include="..\source\direct3d10\ImageLoadInformation.cpp" />
     <ClCompile Include="..\source\direct3d10\Texture1D.cpp" />
     <ClCompile Include="..\source\direct3d10\Texture1DDescription.cpp" />
     <ClCompile Include="..\source\direct3d10\Texture2D.cpp" />
@@ -1402,8 +1400,6 @@
     <ClInclude Include="..\source\direct3d10\SpriteInstance.h" />
     <ClInclude Include="..\source\direct3d10\Font10.h" />
     <ClInclude Include="..\source\direct3d10\FontDescription10.h" />
-    <ClInclude Include="..\source\direct3d10\ImageInformation10.h" />
-    <ClInclude Include="..\source\direct3d10\ImageLoadInformation.h" />
     <ClInclude Include="..\source\direct3d10\Texture1D.h" />
     <ClInclude Include="..\source\direct3d10\Texture1DDescription.h" />
     <ClInclude Include="..\source\direct3d10\Texture2D.h" />

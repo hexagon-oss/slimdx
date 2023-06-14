@@ -993,12 +993,6 @@
     <ClCompile Include="..\source\direct3d10\FontDescription10.cpp">
       <Filter>Direct3D10\Font</Filter>
     </ClCompile>
-    <ClCompile Include="..\source\direct3d10\ImageInformation10.cpp">
-      <Filter>Direct3D10\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="..\source\direct3d10\ImageLoadInformation.cpp">
-      <Filter>Direct3D10\Texture</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\direct3d10\Texture1D.cpp">
       <Filter>Direct3D10\Texture\1D</Filter>
     </ClCompile>
@@ -2954,12 +2948,6 @@
     </ClInclude>
     <ClInclude Include="..\source\direct3d10\FontDescription10.h">
       <Filter>Direct3D10\Font</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\direct3d10\ImageInformation10.h">
-      <Filter>Direct3D10\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="..\source\direct3d10\ImageLoadInformation.h">
-      <Filter>Direct3D10\Texture</Filter>
     </ClInclude>
     <ClInclude Include="..\source\direct3d10\Texture1D.h">
       <Filter>Direct3D10\Texture\1D</Filter>

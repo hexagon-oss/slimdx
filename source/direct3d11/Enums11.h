@@ -231,39 +231,6 @@ namespace SlimDX
 			InverseSecondarySourceAlpha = D3D11_BLEND_INV_SRC1_ALPHA
 		};
 
-		/// <summary>
-		/// The following flags are used to specify which channels in a texture to operate on.
-		/// </summary>
-		/// <unmanaged>D3DX11_CHANNEL_FLAG</unmanaged>
-		[System::Flags]
-		public enum class Channel : System::Int32
-		{
-			/// <summary>
-			/// Indicates the red channel should be used.
-			/// </summary>
-			Red = D3DX11_CHANNEL_RED,
-
-			/// <summary>
-			/// Indicates the blue channel should be used.
-			/// </summary>
-			Blue = D3DX11_CHANNEL_BLUE,
-
-			/// <summary>
-			/// Indicates the green channel should be used.
-			/// </summary>
-			Green = D3DX11_CHANNEL_GREEN,
-
-			/// <summary>
-			/// Indicates the alpha channel should be used.
-			/// </summary>
-			Alpha = D3DX11_CHANNEL_ALPHA,
-
-			/// <summary>
-			/// Indicates the luminances of the red, green, and blue channels should be used.
-			/// </summary>
-			Luminance = D3DX11_CHANNEL_LUMINANCE
-		};
-		
 		/// <summary>Identifies which components of each pixel of a render target are writable during blending.</summary>
 		/// <unmanaged>D3D11_COLOR_WRITE_ENABLE</unmanaged>
 		[System::Flags]
@@ -669,27 +636,6 @@ namespace SlimDX
 			Warp = D3D_DRIVER_TYPE_WARP
 		};
 
-		/// <summary>Specifies detailed information about effect variables.</summary>
-		/// <unmanaged>D3DX11_EFFECT_VARIABLE</unmanaged>
-		[System::Flags]
-		public enum class EffectVariableFlags : System::Int32
-		{
-			/// <summary>
-			/// Standard effect variable.
-			/// </summary>
-			None = 0,
-			
-			/// <summary>
-			/// Indicates that the variable is an annotation or global.
-			/// </summary>
-			Annotation = D3DX11_EFFECT_VARIABLE_ANNOTATION,
-			
-			/// <summary>
-			/// Indicates the variable has been explicitly bound using the register keyword in the effect code.
-			/// </summary>
-			ExplicitBindPoint = D3DX11_EFFECT_VARIABLE_EXPLICIT_BIND_POINT,
-		};
-
 		[System::Flags]
 		public enum class FastFourierTransformCreationFlags : System::Int32
 		{
@@ -872,84 +818,6 @@ namespace SlimDX
 			ComparisonAnisotropic = D3D11_FILTER_COMPARISON_ANISOTROPIC
 		};
 		
-		/// <summary>Specifies possible texture filtering flags.</summary>
-		/// <unmanaged>D3DX11_FILTER_FLAG</unmanaged>
-		[System::Flags]
-		public enum class FilterFlags : System::Int32
-		{
-			/// <summary>
-			/// No scaling or filtering will take place. Pixels outside the bounds of the source image are assumed to be transparent black.
-			/// </summary>
-			None = D3DX11_FILTER_NONE,
-
-			/// <summary>
-			/// Each destination pixel is computed by sampling the nearest pixel from the source image.
-			/// </summary>
-			Point = D3DX11_FILTER_POINT,
-
-			/// <summary>
-			/// Each destination pixel is computed by sampling the four nearest pixels from the source image. This filter
-			/// works best when the scale on both axes is less than two.
-			/// </summary>
-			Linear = D3DX11_FILTER_LINEAR,
-
-			/// <summary>
-			/// Every pixel in the source image contributes equally to the destination image. This is the slowest of the filters.
-			/// </summary>
-			Triangle = D3DX11_FILTER_TRIANGLE,
-
-			/// <summary>
-			/// Each pixel is computed by averaging a 2x2(x2) box of pixels from the source image. This filter works only when the
-			/// dimensions of the destination are half those of the source, as is the case with mipmaps.
-			/// </summary>
-			Box = D3DX11_FILTER_BOX,
-
-			/// <summary>
-			/// Pixels off the edge of the texture on the u-axis should be mirrored, not wrapped.
-			/// </summary>
-			MirrorU = D3DX11_FILTER_MIRROR_U,
-
-			/// <summary>
-			/// Pixels off the edge of the texture on the v-axis should be mirrored, not wrapped.
-			/// </summary>
-			MirrorV = D3DX11_FILTER_MIRROR_V,
-
-			/// <summary>
-			/// Pixels off the edge of the texture on the w-axis should be mirrored, not wrapped.
-			/// </summary>
-			MirrowW = D3DX11_FILTER_MIRROR_W,
-
-			/// <summary>
-			/// Combines the MirrorU, MirrorV, and MirrorW flags.
-			/// </summary>
-			Mirror = D3DX11_FILTER_MIRROR,
-
-			/// <summary>
-			/// The resulting image must be dithered using a 4x4 ordered dither algorithm. This happens when converting from one format to another.
-			/// </summary>
-			Dither = D3DX11_FILTER_DITHER,
-
-			/// <summary>
-			/// Do diffuse dithering on the image when changing from one format to another.
-			/// </summary>
-			DitherDiffusion = D3DX11_FILTER_DITHER_DIFFUSION,
-
-			/// <summary>
-			/// Input data is in standard RGB (sRGB) color space.
-			/// </summary>
-			StandardRgbIn = D3DX11_FILTER_SRGB_IN,
-
-			/// <summary>
-			/// Output data is in standard RGB (sRGB) color space.
-			/// </summary>
-			StandardRgbOut = D3DX11_FILTER_SRGB_OUT,
-
-			/// <summary>
-			/// Combines the StandardRgbIn and StandardRgbOut flags.
-			/// </summary>
-			StandardRgb = D3DX11_FILTER_SRGB
-		};
-		
 		/// <summary>Identifies which resources are supported for a given format and given device.</summary>
 		/// <unmanaged>D3D11_FORMAT_SUPPORT</unmanaged>
 		[System::Flags]
@@ -1089,50 +957,6 @@ namespace SlimDX
 			/// The format can be used with the HLSL "gather" and "compare" functions.
 			/// </summary>
 			ShaderGatherComparisonIntrinsic = D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON
-		};
-		
-		/// <summary>Specifies image file formats supported by runtime.</summary>
-		/// <unmanaged>D3DX11_IMAGE_FILE_FORMAT</unmanaged>
-		public enum class ImageFileFormat : System::Int32
-		{
-			/// <summary>
-			/// Windows bitmap (BMP) file format. Contains a header that describes the resolution of the device on which the
-			/// rectangle of pixels was created, the dimensions of the rectangle, the size of the array of bits, a logical palette,
-			/// and an array of bits that defines the relationship between pixels in the bitmapped image and entries in the logical palette.
-			/// </summary>
-			Bmp = D3DX11_IFF_BMP,
-
-			/// <summary>
-			/// Joint Photographic Experts Group (JPEG) compressed file format. Specifies variable compression of 24-bit RGB color
-			/// and 8-bit gray-scale Tagged Image File Format (TIFF) image document files.
-			/// </summary>
-			Jpg = D3DX11_IFF_JPG,
-
-			/// <summary>
-			/// Portable Network Graphics (PNG) file format. A non-proprietary bitmap format using lossless compression.
-			/// </summary>
-			Png = D3DX11_IFF_PNG,
-
-			/// <summary>
-			/// DirectDraw surface (DDS) file format. Stores textures, volume textures, and cubic environment maps, with or without
-			/// mipmap levels, and with or without pixel compression.
-			/// </summary>
-			Dds = D3DX11_IFF_DDS,
-
-			/// <summary>
-			/// Tagged Image File Format (TIFF).
-			/// </summary>
-			Tiff = D3DX11_IFF_TIFF,
-
-			/// <summary>
-			/// Graphics Interchange Format (GIF).
-			/// </summary>
-			Gif = D3DX11_IFF_GIF,
-
-			/// <summary>
-			/// Windows Media Player format (WMP).
-			/// </summary>
-			Wmp = D3DX11_IFF_WMP
 		};
 		
 		/// <summary>Specifies possible types of data contained in an input slot.</summary>
@@ -1282,40 +1106,6 @@ namespace SlimDX
 			Info = D3D11_MESSAGE_SEVERITY_INFO
 		};
 
-		/// <summary>
-		/// Normal maps generation constants.
-		/// </summary>
-		/// <unmanaged>D3DX11_NORMALMAP_FLAG</unmanaged>
-		[System::Flags]
-		public enum class NormalMapFlags : System::Int32
-		{
-			/// <summary>
-			/// Indicates that pixels off the edge of the texture on the u-axis should be mirrored, not wrapped.
-			/// </summary>
-			MirrorU = D3DX11_NORMALMAP_MIRROR_U,
-
-			/// <summary>
-			/// Indicates that pixels off the edge of the texture on the v-axis should be mirrored, not wrapped.
-			/// </summary>
-			MirrorV = D3DX11_NORMALMAP_MIRROR_V,
-
-			/// <summary>
-			/// Same as specifying the MirrorU and MirrorV flags.
-			/// </summary>
-			Mirror = D3DX11_NORMALMAP_MIRROR,
-
-			/// <summary>
-			/// Inverts the direction of each normal.
-			/// </summary>
-			InvertSign = D3DX11_NORMALMAP_INVERTSIGN,
-
-			/// <summary>
-			/// Computes the per-pixel occlusion term and encodes it into the alpha. An alpha of 1 means that the
-			/// pixel is not obscured in any way, and an alpha of 0 means that the pixel is completely obscured.
-			/// </summary>
-			ComputeOcclusion = D3DX11_NORMALMAP_COMPUTE_OCCLUSION
-		};
-		
 		/// <summary>Specifies how the pipeline should interpret vertex data bound to the input assembler stage.</summary>
 		/// <unmanaged>D3D11_PRIMITIVE_TOPOLOGY</unmanaged>
 		public enum class PrimitiveTopology : System::Int32

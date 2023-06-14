@@ -22,7 +22,6 @@
 #pragma once
 
 #include <windows.h>
-#include <d3dx9.h>
 #include <dxgi.h>
 
 #include "Result.h"
@@ -61,13 +60,11 @@ namespace SlimDX
 		static void ConvertRect(System::Drawing::Rectangle& source, RECT& dest);
 
 		static System::String^ BlobToString( ID3D10Blob *blob );
-		static System::String^ BufferToString( ID3DXBuffer *buffer );
 
 		static array<System::Byte>^ ReadStream( System::IO::Stream^ stream, DataStream^* dataStream );
 		static array<System::Byte>^ ReadStream( System::IO::Stream^ stream, int% readLength, DataStream^* dataStream );
 
 		generic<typename T> where T : value class
-		static array<T>^ ReadRange( ID3DXBuffer *buffer, int count );
 
 		//These doc comments are mostly intended to copy to other places.
 

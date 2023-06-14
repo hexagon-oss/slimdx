@@ -8,3 +8,4 @@
 *.unsuccessfulbuild
 *.lastbuildstate
 *.log
+.vs
